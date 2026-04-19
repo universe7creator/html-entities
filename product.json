@@ -1,0 +1,17 @@
+{
+  "name": "HTML Entities Pro",
+  "slug": "html-entities",
+  "tagline": "Encode and decode HTML entities instantly. Convert special characters to HTML entities and back with one click. Essential for web developers.",
+  "description": "Encode and decode HTML entities instantly. Convert special characters to HTML entities and back with one click. Essential for web developers.",
+  "price": "9",
+  "features": [],
+  "tech_stack": "Vercel + Node.js",
+  "status": "building",
+  "vercel_url": null,
+  "github_url": null,
+  "lemonsqueezy_checkout_url": null,
+  "lemonsqueezy_product_id": null,
+  "webhook_url": null,
+  "created_cycle": null,
+  "deployed_cycle": null
+}

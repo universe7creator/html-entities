@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Entities Pro — Encode & Decode Instantly</title>
+  <meta name="description" content="Convert text to HTML entities and back instantly. Essential tool for web developers handling special characters.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+    @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+    .fade-in { animation: fadeIn 0.6s ease-out forwards; }
+    .glass { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
+    .gradient-text { background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .shimmer { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); background-size: 200% 100%; animation: shimmer 2s infinite; }
+    .btn-glow:hover { box-shadow: 0 0 30px rgba(96, 165, 250, 0.5); }
+    .demo-area { min-height: 200px; }
+  </style>
+</head>
+<body class="bg-[#0a0a0a] text-white font-sans">
+  <!-- Hero -->
+  <section class="min-h-screen flex flex-col items-center justify-center px-4 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-pink-900/20 pointer-events-none"></div>
+    <div class="text-center max-w-4xl mx-auto fade-in">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm mb-8">
+        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+        <span class="text-gray-300">Live Demo Available</span>
+      </div>
+      <h1 class="text-5xl md:text-7xl font-bold mb-6">
+        <span class="gradient-text">HTML Entities Pro</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-400 mb-4 max-w-2xl mx-auto">
+        Encode & decode HTML entities instantly. One-click transformations for web developers.
+      </p>
+      <p class="text-lg text-gray-500 mb-12">
+        Handle special characters safely. Convert <code>&</code> to <code>&amp;amp;</code> and back with ease.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <button id="buyBtn" class="btn-glow px-8 py-4 bg-blue-500 hover:bg-blue-600 rounded-full font-bold text-lg transition-all">
+          Get Pro Access — $19
+        </button>
+        <button onclick="scrollToDemo()" class="px-8 py-4 glass hover:bg-white/10 rounded-full font-medium transition-all">
+          Try Demo
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo -->
+  <section id="demo" class="py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Try It Now</h2>
+      <div class="glass rounded-2xl p-6 md:p-8">
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="block text-sm text-gray-400 mb-2">Input</label>
+            <textarea id="input" class="w-full h-40 bg-black/50 rounded-xl p-4 text-white font-mono text-sm border border-white/10 focus:border-blue-500 focus:outline-none resize-none" placeholder="Type something with special chars: <div>Hello & Welcome!</div>"></textarea>
+          </div>
+          <div>
+            <label class="block text-sm text-gray-400 mb-2">Output</label>
+            <textarea id="output" readonly class="w-full h-40 bg-black/30 rounded-xl p-4 text-green-400 font-mono text-sm border border-white/10 resize-none" placeholder="Result will appear here..."></textarea>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-3 justify-center">
+          <button onclick="encode()" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-xl font-medium transition-all">
+            Encode to HTML
+          </button>
+          <button onclick="decode()" class="px-6 py-3 bg-purple-500 hover:bg-purple-600 rounded-xl font-medium transition-all">
+            Decode from HTML
+          </button>
+          <button onclick="clearAll()" class="px-6 py-3 glass hover:bg-white/10 rounded-xl font-medium transition-all">
+            Clear
+          </button>
+          <button onclick="copyOutput()" class="px-6 py-3 glass hover:bg-white/10 rounded-xl font-medium transition-all flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+            Copy
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">Why Developers Love It</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass rounded-2xl p-6 hover:bg-white/10 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center mb-4 text-2xl">⚡</div>
+          <h3 class="text-xl font-bold mb-2">Instant Encoding</h3>
+          <p class="text-gray-400">Convert special characters to HTML entities in milliseconds. No server round-trip needed for basic encoding.</p>
+        </div>
+        <div class="glass rounded-2xl p-6 hover:bg-white/10 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-4 text-2xl">🔄</div>
+          <h3 class="text-xl font-bold mb-2">Bidirectional</h3>
+          <p class="text-gray-400">Encode and decode with equal ease. Supports all common HTML entities including numeric and hex codes.</p>
+        </div>
+        <div class="glass rounded-2xl p-6 hover:bg-white/10 transition-all">
+          <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center mb-4 text-2xl">🔒</div>
+          <h3 class="text-xl font-bold mb-2">Safe Output</h3>
+          <p class="text-gray-400">Prevent XSS vulnerabilities by properly escaping user-generated content before rendering.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section class="py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Common Use Cases</h2>
+      <div class="space-y-4">
+        <div class="glass rounded-xl p-6 flex items-center gap-4">
+          <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-xl">🌐</div>
+          <div>
+            <h3 class="font-bold">Display Code Snippets</h3>
+            <p class="text-gray-400 text-sm">Show HTML code on your blog without it being rendered by the browser</p>
+          </div>
+        </div>
+        <div class="glass rounded-xl p-6 flex items-center gap-4">
+          <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center text-xl">📝</div>
+          <div>
+            <h3 class="font-bold">Email Templates</h3>
+            <p class="text-gray-400 text-sm">Prepare HTML email content with proper entity encoding for maximum compatibility</p>
+          </div>
+        </div>
+        <div class="glass rounded-xl p-6 flex items-center gap-4">
+          <div class="w-10 h-10 rounded-lg bg-pink-500/20 flex items-center justify-center text-xl">🛡️</div>
+          <div>
+            <h3 class="font-bold">XSS Prevention</h3>
+            <p class="text-gray-400 text-sm">Sanitize user input before displaying it on your website</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">What Developers Say</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass rounded-2xl p-6">
+          <div class="flex items-center gap-1 mb-4 text-yellow-400">★★★★★</div>
+          <p class="text-gray-300 mb-4">"Essential tool for my daily workflow. I use it every time I need to display code examples on my documentation site."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-purple-500"></div>
+            <div>
+              <div class="font-medium">Alex Chen</div>
+              <div class="text-sm text-gray-500">Frontend Developer</div>
+            </div>
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="flex items-center gap-1 mb-4 text-yellow-400">★★★★★</div>
+          <p class="text-gray-300 mb-4">"The bidirectional encoding is a lifesaver. I can quickly switch between encoded and decoded versions when debugging."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-blue-500"></div>
+            <div>
+              <div class="font-medium">Maria Garcia</div>
+              <div class="text-sm text-gray-500">Full Stack Engineer</div>
+            </div>
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="flex items-center gap-1 mb-4 text-yellow-400">★★★★★</div>
+          <p class="text-gray-300 mb-4">"Simple, fast, and reliable. The one-time purchase model is refreshing compared to subscription-based tools."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-red-500"></div>
+            <div>
+              <div class="font-medium">James Wilson</div>
+              <div class="text-sm text-gray-500">Web Agency Owner</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 px-4">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">FAQ</h2>
+      <div class="space-y-4">
+        <div class="glass rounded-xl p-6">
+          <h3 class="font-bold mb-2">What HTML entities are supported?</h3>
+          <p class="text-gray-400">We support all standard named entities (&amp;amp;, &amp;lt;, &amp;gt;, etc.) as well as numeric (&#38;) and hexadecimal (&#x26;) entities.</p>
+        </div>
+        <div class="glass rounded-xl p-6">
+          <h3 class="font-bold mb-2">Is there a character limit?</h3>
+          <p class="text-gray-400">Pro users can encode/decode up to 100,000 characters per request. This covers the vast majority of use cases.</p>
+        </div>
+        <div class="glass rounded-xl p-6">
+          <h3 class="font-bold mb-2">Can I use this offline?</h3>
+          <p class="text-gray-400">Yes! Once purchased, you get lifetime access including offline capabilities via our downloadable desktop app.</p>
+        </div>
+        <div class="glass rounded-xl p-6">
+          <h3 class="font-bold mb-2">Is my data secure?</h3>
+          <p class="text-gray-400">Absolutely. All processing happens locally in your browser. We never store or transmit your text to our servers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-4">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to simplify your workflow?</h2>
+      <p class="text-xl text-gray-400 mb-8">Get lifetime access for a one-time payment. No subscriptions.</p>
+      <button id="buyBtn2" class="btn-glow px-12 py-5 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 rounded-full font-bold text-xl transition-all">
+        Get HTML Entities Pro — $19
+      </button>
+      <p class="text-sm text-gray-500 mt-6">30-day money-back guarantee. Instant access.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-4 border-t border-white/10">
+    <div class="max-w-6xl mx-auto flex flex-wrap justify-between items-center gap-4">
+      <div class="text-gray-500">© 2026 HTML Entities Pro. All rights reserved.</div>
+      <div class="flex gap-6 text-gray-400">
+        <a href="#" class="hover:text-white transition-colors">Privacy</a>
+        <a href="#" class="hover:text-white transition-colors">Terms</a>
+        <a href="#" class="hover:text-white transition-colors">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const CHECKOUT_URL = window.__CHECKOUT_URL || null;
+
+    document.getElementById('buyBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      if (CHECKOUT_URL) window.open(CHECKOUT_URL, '_blank');
+      else alert('Coming soon! Follow @OtonomUniverseCreator for updates.');
+    });
+
+    document.getElementById('buyBtn2').addEventListener('click', (e) => {
+      e.preventDefault();
+      if (CHECKOUT_URL) window.open(CHECKOUT_URL, '_blank');
+      else alert('Coming soon! Follow @OtonomUniverseCreator for updates.');
+    });
+
+    function scrollToDemo() {
+      document.getElementById('demo').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function encode() {
+      const input = document.getElementById('input').value;
+      const output = input.replace(/[&<>"']/g, (char) => {
+        const entities = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#x27;' };
+        return entities[char] || char;
+      });
+      document.getElementById('output').value = output;
+    }
+
+    function decode() {
+      const input = document.getElementById('input').value;
+      const output = input
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#x27;/g, "'")
+        .replace(/&#39;/g, "'")
+        .replace(/&apos;/g, "'")
+        .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(code))
+        .replace(/&#x([0-9a-fA-F]+);/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+      document.getElementById('output').value = output;
+    }
+
+    function clearAll() {
+      document.getElementById('input').value = '';
+      document.getElementById('output').value = '';
+    }
+
+    function copyOutput() {
+      const output = document.getElementById('output');
+      output.select();
+      document.execCommand('copy');
+      alert('Copied to clipboard!');
+    }
+  </script>
+</body>
+</html>

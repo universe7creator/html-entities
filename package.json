@@ -1,0 +1,14 @@
+{
+  "name": "html-entities",
+  "version": "1.0.0",
+  "description": "Encode and decode HTML entities instantly. Convert special characters to HTML entities and back with one click. Essential for web developers.",
+  "main": "api/process.js",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "vercel-build": "echo 'Build complete'"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
