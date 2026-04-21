@@ -6,12 +6,12 @@
   "price": "9",
   "features": [],
   "tech_stack": "Vercel + Node.js",
-  "status": "building",
+  "status": "ready_to_deploy",
   "vercel_url": null,
-  "github_url": null,
+  "github_url": "https://github.com/universe7creator/html-entities",
   "lemonsqueezy_checkout_url": null,
   "lemonsqueezy_product_id": null,
   "webhook_url": null,
-  "created_cycle": null,
+  "created_cycle": 967,
   "deployed_cycle": null
 }
